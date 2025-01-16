@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../../layouts/base_layout.astro";
+const pageTitle = "Tag page";
+const allPosts = Object.values(
+  import.meta.glob("../posts/*.md", { eager: true }),
+);
+const uniqueTags = [
+  ...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat()),
+];
+---
+
+<style>
+  a {
+    color: #ff539f;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tags {
+    margin: 0.25rem;
+    border: dotted 1px #a1a1a1;
+    border-radius: 0.5rem;
+    padding: .5rem 1rem;
+    font-size: : 1.15rem;;
+    background-color: #F8FCFD;
+  }
+</style>
+<BaseLayout pageTitle={pageTitle}>
+  <div class="tags">
+    {
+      uniqueTags.map((tag) => (
+        <p class="tags">
+          <a href={`/tags/${tag}`}>{tag}</a>
+        </p>
+      ))
+    }
+  </div>
+</BaseLayout>
