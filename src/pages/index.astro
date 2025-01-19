@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "../layouts/base_layout.astro";
-import Greeting from "../components/greetings";
+import Background from "../components/background.astro";
 ---
 
 <BaseLayout pageTitle="Home">
-  <h2>Blog de voyage pour le canada</h2>
-  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Salut"]} />
+  <h2>Le Echte Canda</h2>
+  <Background image="/echte_canada_background.png" />
 </BaseLayout>
