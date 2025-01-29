@@ -1,16 +1,58 @@
 ---
+interface NavigationLink {
+  url: string;
+  label: string;
+}
 
+interface Props {
+  navigation_links: NavigationLink[];
+  position: "left" | "right";
+}
+
+const { navigation_links, position } = Astro.props;
 ---
 
-<div class="nav-links">
-  <!-- TODO: Add the Home page -->
-  <a href="/">Home</a>
-  <!-- TODO: Add the blog page -->
-  <a href="/blog/">Blog</a>
-  <!-- TODO: Add the about page -->
-  <a href="/about/">About</a>
-  <!-- TODO: Add the gallery page -->
-  <a href="/gallery/">Gallery</a>
-  <!-- TODO: Add the contact page -->
-  <a href="/contact/">Gallery</a>
+<div class={`nav-groups nav-${position}`}>
+  {
+    navigation_links.map((navlink) => (
+      <a class="nav-link" href={navlink.url}>
+        {navlink.label}
+      </a>
+    ))
+  }
 </div>
+
+<style>
+  .nav-groups {
+    display: flex;
+    gap: 2rem;
+    flex: 1;
+  }
+
+  /** nav-left will push the item in the div right to the container (to stick to center) */
+  .nav-left {
+    justify-content: flex-end;
+  }
+  .nav-right {
+    justify-content: flex-start;
+  }
+
+  .nav-link {
+    color: #000000;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 2rem;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus {
+    color: #ff50f0;
+  }
+
+  @media (max-width: 768px) {
+    .nav-group {
+      justify-content: center;
+    }
+  }
+</style>
