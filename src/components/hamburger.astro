@@ -1,9 +1,14 @@
 ---
+interface Props {
+  additional_class?: string;
+  hambuger_id?: string;
+}
 
+const { additional_class, hambuger_id } = Astro.props;
 ---
 
-<div class="hamburger">
-  <span class="line"></span>
-  <span class="line"></span>
-  <span class="line"></span>
+<div class=`space-y-2 ${additional_class}` id={hambuger_id || undefined}>
+  <span class="block w-8 h-0.5 bg-gray-600"></span>
+  <span class="block w-8 h-0.5 bg-gray-600"></span>
+  <span class="block w-8 h-0.5 bg-gray-600"></span>
 </div>

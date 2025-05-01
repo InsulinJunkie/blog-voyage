@@ -1,86 +1,36 @@
- html { 
-   background-color: #f1f5f9;
-  font-family: sans-serif;
+@import "tailwindcss";
+
+
+@layer base {
+  @font-face {
+    font-family: "Remachine Script";
+    src: url("/fonts/remachine_script.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+}
+
+@theme {
+  --color-peach-50: #fff9ed;
+  --color-peach-100: #fff3db;
+  --color-peach-200: #ffe7b7;
+  --color-peach-300: #ffdb94;
+  --color-peach-400: #ffcf70;
+  --color-peach-500: #ffc34c;
+  --color-peach-600: #cc9c3d;
+  --color-peach-700: #99752e;
+  --color-peach-800: #664e1e;
+  --color-peach-900: #33270f;
 }
 
 body {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 80ch;
-  padding: 1rem;
-  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #fff9ed;
 }
 
-* {
-  box-sizing: border-box;
+main {
+  flex: 1;
 }
-
-h1 {
-  margin: 1rem 0;
-  font-size: 2.5rem;
-  color: green;
-}
-
-/* hamburger style */
-.hamburger {
-  padding-right: 20px;
-  cursor: pointer;
-}
-
-.hamburger .line {
-  display: block;
-  width: 40px;
-  height: 5px;
-  margin-bottom: 10px;
-  background-color: #ff9776;
-}
-
-/* /* nav styles */ */
-/* .nav-links { */
-/*   width: 100%; */
-/*   top: 5rem; */
-/*   left: 48px; */
-/*   background-color: #ff9776; */
-/*   display: none; */
-/*   margin: 0; */
-/* } */
-/**/
-/* .nav-links a { */
-/*   display: block; */
-/*   text-align: center; */
-/*   padding: 10px 0; */
-/*   text-decoration: none; */
-/*   font-size: 1.2rem; */
-/*   font-weight: bold; */
-/*   text-transform: uppercase; */
-/* } */
-/**/
-/* .nav-links a:hover, */
-/* .nav-links a:focus { */
-/*   background-color: #ff9776; */
-/* } */
-/**/
-/* .expanded { */
-/*   display: unset; */
-/* } */
-/**/
-@media screen and (min-width: 636px) { */
-/*   /* .nav-links { */ */
-/*   /*   margin-left: 5em; */ */
-/*   /*   display: block; */ */
-/*   /*   position: static; */ */
-/*   /*   width: auto; */ */
-/*   /*   background: none; */ */
-/*   /* } */ */
-/*   /**/ */
-/*   /* .nav-links a { */ */
-/*   /*   display: inline-block; */ */
-/*   /*   padding: 15px 20px; */ */
-/*   /* } */ */
-/*   /**/ */
-  .hamburger {
-    display: none;
-  }
-
-}
-

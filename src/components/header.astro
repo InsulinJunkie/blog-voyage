@@ -1,36 +1,19 @@
 ---
 import Navigation from "./navigation.astro";
-import SiteTitle from "./title.astro";
-import HorizontalLine from "./horizontal_line.astro";
 
-const site_title = "Gauffre & Sirop d'erable";
-const leftLinks = [
-  { url: "/", label: "Home" },
-  { url: "/blog", label: "Blog" },
-];
-const rightLinks = [
-  { url: "/gallery", label: "Gallery" },
-  { url: "/contact", label: "Contact" },
-];
-const line_opacity = 0.5;
+const site_title = "Gaufre & Sirop d'erable";
 ---
 
-<header>
-  <nav class="nav-container">
-    <!-- <Hamburger /> -->
-    <Navigation navigation_links={leftLinks} position="left" />
-    <SiteTitle title={site_title} />
-    <Navigation navigation_links={rightLinks} position="right" />
-  </nav>
-  <HorizontalLine color="#aaaaaa" opacity={line_opacity} />
-</header>
+<header class="sticky top-0 z-50 w-full bg-white shadow-sm">
+  <div class="w-full px-4 h-16 flex items-center">
+    <div class="flex items-center gap-4">
+      <a class="site-logo w-12 h-12" href="/">
+        <img src="/logo.svg" alt="" />
+      </a>
+      <h1 class="text-xl font-bold text-gray-900">{site_title}</h1>
+    </div>
 
-<style>
-  .nav-container {
-    width: 100%
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-</style>
+    <!-- NAVIGATION -->
+    <Navigation />
+  </div>
+</header>

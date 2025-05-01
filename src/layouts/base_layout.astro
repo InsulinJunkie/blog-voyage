@@ -2,7 +2,6 @@
 import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
 import "../styles/global.css";
-import Background from "../components/background.astro";
 const { pageTitle } = Astro.props;
 ---
 
@@ -11,20 +10,13 @@ const { pageTitle } = Astro.props;
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
   </head>
   <body>
     <Header />
-    <slot />
+    <main>
+      <slot />
+    </main>
     <Footer />
-    <script>
-      import "../scripts/menu.js";
-    </script>
-    <Background
-      image="/echte_canada_background.png"
-      overlay={true}
-      opacity={0.6}
-    />
   </body>
 </html>
