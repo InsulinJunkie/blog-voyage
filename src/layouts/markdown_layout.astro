@@ -4,37 +4,231 @@ const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
-  <div class="tags">
-    {
-      frontmatter.tags.map((tag: string) => (
-        <p class="tag">
-          <a href={`/tags/${tag}`}>{tag}</a>
-        </p>
-      ))
-    }
+  <h1 class="main-title w-full text-4xl font-bold text-center my-8">
+    {frontmatter.title}
+  </h1>
+
+  <!-- NOTE: content of the article. -->
+  <article class="prose lg:prose-xl px-8 md:px-12">
+    <slot />
+  </article>
+
+  <div class="flex justify-between items-center w-full p-8">
+    <!-- NOTE: Go back button -->
+    <div class="flex items-center gap-4">
+      <img class="h-5 w-5" src="/icons/go_back.svg" />
+      <a
+        href="/blog"
+        class="inline-flex items-center text-peach-800 hover:underline"
+      >
+        Back to blog list
+      </a>
+    </div>
+
+    <!-- NOTE: Signature -->
+    <div class="flex justify-end">
+      <div class="text-right">
+        {
+          frontmatter.author && (
+            <div class="flex items-center justify-end ">
+              <span class="font-bold">{frontmatter.author}</span>
+            </div>
+          )
+        }
+        {
+          frontmatter.pubDate && (
+            <time class="text-gray-600 dark:text-gray-400 text-sm block">
+              {new Date(frontmatter.pubDate).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </time>
+          )
+        }
+      </div>
+    </div>
   </div>
-  <slot />
-  <p>Published on: {frontmatter.pubDate.toString().slice(0, 10)}</p>
-  <p>Written by {frontmatter.author}</p>
-  <a href="/blog/"> Go back to post list</a>
 </BaseLayout>
 
-<style>
-  a {
-    color: #00539f;
+<style is:global>
+  article {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.8;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
+  article p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    max-width: 70ch;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .tag {
-    margin: 0.25em;
-    border: dotted 1px #a1a1a1;
-    border-radius: 0.5em;
-    padding: 0.5em 1em;
-    font-size: 1.15em;
-    background-color: #f8fcfd;
+  article h1,
+  article h2,
+  article h3,
+  article h4,
+  article h5,
+  article h6,
+  .main-title {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .main-title {
+    font-size: 3.5rem;
+    color: #664e1e;
+  }
+
+  article h1 {
+    font-size: 2.5rem;
+    /* TODO: See if we can use something with more constrast in the peach color */
+    color: #99752e;
+  }
+
+  article h2 {
+    font-size: 2rem;
+    color: #cc9c3d; /* indigo-500 */
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  article h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #ffc34c, transparent);
+  }
+
+  article h3 {
+    font-size: 1.5rem;
+    color: #ffc34c;
+  }
+
+  article h4 {
+    font-size: 1.25rem;
+    color: #ffcf70;
+  }
+
+  article ul,
+  article ol {
+    margin-bottom: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 60ch;
+    text-align: left;
+    padding-left: 2rem;
+  }
+
+  article ul {
+    list-style-type: disc; /* Standard bullet point */
+  }
+
+  article ul ul {
+    list-style-type: circle; /* Circle for second level */
+  }
+
+  article ul ul ul {
+    list-style-type: square; /* Square for third level */
+  }
+
+  article ol {
+    list-style-type: decimal; /* Standard numbering (1, 2, 3) */
+  }
+
+  article ol ol {
+    list-style-type: lower-alpha; /* Alphabetical for second level (a, b, c) */
+  }
+
+  article ol ol ol {
+    list-style-type: lower-roman; /* Roman numerals for third level (i, ii, iii) */
+  }
+
+  /* Spacing for list items */
+  article li {
+    margin-bottom: 0.5rem;
+  }
+
+  article li.task-list-item {
+    list-style-type: none;
+    position: relative;
+  }
+
+  article li.task-list-item input[type="checkbox"] {
+    margin-right: 0.5rem;
+  }
+  article li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Blockquotes */
+  article blockquote {
+    font-style: italic;
+    border-left: 4px solid #fff9ed;
+    padding-left: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 65ch;
+    color: #33270f;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Links */
+  article a {
+    color: #664e1e;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s ease;
+  }
+
+  article a:hover {
+    color: #cc9c3d;
+  }
+
+  /* Images */
+  article img {
+    max-width: 100%;
+    height: auto;
+    margin: 1.5rem auto;
+    display: block;
+    border-radius: 0.5rem;
+  }
+
+  /* Tables */
+  article table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1.5rem auto;
+    max-width: 90%;
+  }
+
+  article th,
+  article td {
+    border: 1px solid #d1d5db;
+    padding: 0.5rem;
+    text-align: left;
+  }
+
+  article th {
+    background-color: #fff9ed;
+    font-weight: 600;
+  }
+
+  /* Horizontal rule */
+  article hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #d1d5db, transparent);
+    margin: 2rem auto;
+    width: 80%;
   }
 </style>
