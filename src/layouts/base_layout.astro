@@ -9,6 +9,13 @@ const { pageTitle } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="preload"
+      href="fonts/remachine_script.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
     <meta name="viewport" content="width=device-width" />
     <title>{pageTitle}</title>
   </head>
