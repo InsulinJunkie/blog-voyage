@@ -3,13 +3,12 @@ const { post } = Astro.props;
 const { image_cover, title, description, date } = post.frontmatter;
 ---
 
-<!-- TODO: cover this whole card inside a a anchor to make the whole card a link  -->
 <a
   href={post.url}
   class="transition-transform hover:scale-102 hover:ring-2 hover:ring-offset-2 hover:ring-peach-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-peach-500"
 >
   <div
-    class="flex px-8 w-full min-w-2xl max-w-5xl mx-auto h-64 bg-peach-200 rounded-3xl shadow overflow-hidden"
+    class="flex px-8 w-full max-w-5xl mx-auto h-64 bg-peach-200 rounded-3xl shadow overflow-hidden"
   >
     <!-- Left section: the image -->
     <div class="w-1/3 h-full py-4">
