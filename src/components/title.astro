@@ -1,0 +1,27 @@
+---
+const { title = "Gaufre & Sirop d'erable", color = "#000000" } = Astro.props;
+---
+
+<h1 class="site-title">{title}</h1>
+
+<style define:vars={{ color }}>
+  @font-face {
+    font-family: "Frenchy";
+    src: url("/fonts/frenchy.ttf") format("ttf");
+  }
+
+  .site-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 2rem;
+    white-space: nowrap;
+    color: var(--color);
+    font-family: "Frenchy";
+  }
+
+  @media (max-width: 768px) {
+    .site-title {
+      margin: 1rem 0;
+    }
+  }
+</style>

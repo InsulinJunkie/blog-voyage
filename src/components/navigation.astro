@@ -1,10 +1,58 @@
 ---
+import Hamburger from "./hamburger.astro";
 
+interface NavigationLink {
+  url: string;
+  label: string;
+}
+
+interface Props {
+  navlinks?: NavigationLink[];
+}
+
+const {
+  navlinks = [
+    { url: "/", label: "Accueil" },
+    { url: "/blog", label: "Billets" },
+  ],
+} = Astro.props;
 ---
 
-<div class="nav-links">
-  <a href="/">Home</a>
-  <a href="/about/">About</a>
-  <a href="/blog/">Blog</a>
-  <a href="/tags/">Tags</a>
+<nav class="hidden md:flex items-center gap-8 ml-auto pr-4">
+  {
+    navlinks.map((navlink) => (
+      <a class="text-zinc-600 hover:text-peach-500" href={navlink.url}>
+        {navlink.label}
+      </a>
+    ))
+  }
+</nav>
+
+<Hamburger
+  additional_class="md:hidden p-2 ml-auto pr-2"
+  hambuger_id="menu_button"
+/>
+
+<div class="md:hidden hidden absolute top-16 left-0 w-full" id="mobile_menu">
+  <nav
+    class="px-4 py-2 bg-white border-t border-b flex flex-col gap-2 items-center"
+  >
+    {
+      navlinks.map((navlink) => (
+        <a class="text-zinc-600 hover:text-peach-500" href={navlink.url}>
+          {navlink.label}
+        </a>
+      ))
+    }
+  </nav>
 </div>
+
+<!-- Make the navigation menu appear when clicking on the hamburger-->
+<script>
+  const menuButton = document.getElementById("menu_button");
+  const mobileMenu = document.getElementById("mobile_menu");
+
+  menuButton?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
+  });
+</script>

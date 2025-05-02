@@ -1,9 +1,52 @@
 ---
 import BaseLayout from "../layouts/base_layout.astro";
-import Greeting from "../components/greetings";
+import Background from "../components/background.astro";
+import ProfilePicture from "../components/profile.astro";
 ---
 
 <BaseLayout pageTitle="Home">
-  <h2>Blog de voyage pour le canada</h2>
-  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Salut"]} />
+  <div class="relative">
+    <Background
+      image="/echte_canada_background.png"
+      overlay={true}
+      opacity={0.5}
+    />
+  </div>
+  <div class="flex flex-col -mt-60 justify-center items-center gap-12">
+    <h1 class="relative text-gray-700 inset-0 justify-center">Bienvenue</h1>
+    <ProfilePicture profileImage="/flo_et_moi.jpg" />
+  </div>
+  <div class="texte-introduction max-w-3xl mx-auto px-6 py-16">
+    <div class="relative">
+      <div
+        class="flex flex-col items-center border-l-4 border-r-4 border-peach-500 bg-peach-200 shadow-sm rounded-2xl font-bold font-serif"
+      >
+        <p class="text-center text-nowrap text-2xl text-gray-700 italic p-4">
+          Embarquez avec nous dans notre aventure Canadienne !
+        </p>
+
+        <p class="text-gray-600 text-lg p-4">
+          On se présente, nous c'est Célestin et Flo. On s'est lancé le défi un
+          peu fou de tout lâcher et de partir à l'aventure ! On a la chance de
+          parcourir cette terre pendant un an et on voulait vous faire partager
+          nos découvertes et nos moments de pensée. Ce blog, c'est notre journal
+          intime. On y consignera nos pensée, nos chemins de réflexions et les
+          pistes de réponse que nous avons trouvé.
+        </p>
+
+        <p class="text-gray-600 text-lg p-4">
+          On ne prétend ni avoir la science infuse, ni essayer de convaincre qui
+          que ce soit, de quoi que ce soit. Voyez ces billets simplement comme
+          des notes jetées dans un océan d'information
+        </p>
+      </div>
+    </div>
+  </div>
 </BaseLayout>
+
+<style>
+  h1 {
+    font-family: "Remachine Script", sans-serif;
+    font-size: 14rem;
+  }
+</style>

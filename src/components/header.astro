@@ -1,13 +1,19 @@
 ---
 import Navigation from "./navigation.astro";
-import Hamburger from "./hamburger.astro";
-import ThemeIcon from "./theme_icon.astro";
+
+const site_title = "Gaufre & Sirop d'erable";
 ---
 
-<header>
-  <nav>
-    <Hamburger />
-    <ThemeIcon />
+<header class="sticky top-0 z-50 w-full bg-white shadow-sm">
+  <div class="w-full px-4 h-16 flex items-center">
+    <div class="flex items-center gap-4">
+      <a class="site-logo w-12 h-12" href="/">
+        <img src="/logo.svg" alt="" />
+      </a>
+      <h1 class="text-xl font-bold text-gray-900">{site_title}</h1>
+    </div>
+
+    <!-- NAVIGATION -->
     <Navigation />
-  </nav>
+  </div>
 </header>

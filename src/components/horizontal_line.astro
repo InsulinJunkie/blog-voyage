@@ -1,0 +1,31 @@
+---
+interface Props {
+  height?: string;
+  width?: string;
+  color?: string;
+  opacity: number;
+}
+
+const {
+  height = "3px",
+  width = "100vw",
+  color = "#000000",
+  opacity = 1,
+} = Astro.props;
+---
+
+<hr class="horizontal-line" />
+
+<style define:vars={{ height, width, color, opacity }}>
+  .horizontal-line {
+    width: var(--width);
+    height: var(--height);
+    background-color: var(--color);
+    opacity: var(--opacity);
+    margin-left: calc(-50vw + 50%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-top: 2rem;
+  }
+</style>
