@@ -12,8 +12,8 @@ import ProfilePicture from "../components/profile.astro";
       opacity={0.5}
     />
   </div>
-  <div class="flex flex-col -mt-60 justify-center items-center gap-12">
-    <h1 class="relative text-gray-700 inset-0 justify-center">Bienvenue</h1>
+  <div class="flex flex-col -mt-8 md:-mt-60 justify-center items-center gap-12">
+    <h1 class="relative text-gray-700 inset-0 text-center">Bienvenue</h1>
     <ProfilePicture profileImage="/flo_et_moi.jpg" />
   </div>
   <div class="texte-introduction max-w-3xl mx-auto px-6 py-16">
@@ -21,7 +21,9 @@ import ProfilePicture from "../components/profile.astro";
       <div
         class="flex flex-col items-center border-l-4 border-r-4 border-peach-500 bg-peach-200 shadow-sm rounded-2xl font-bold font-serif"
       >
-        <p class="text-center text-nowrap text-2xl text-gray-700 italic p-4">
+        <p
+          class="text-center md:whitespace-nowrap text-2xl text-gray-700 italic p-4"
+        >
           Embarquez avec nous dans notre aventure Canadienne !
         </p>
 
@@ -47,6 +49,6 @@ import ProfilePicture from "../components/profile.astro";
 <style>
   h1 {
     font-family: "Remachine Script", sans-serif;
-    font-size: 14rem;
+    font-size: clamp(5rem, 15vw, 14rem);
   }
 </style>
