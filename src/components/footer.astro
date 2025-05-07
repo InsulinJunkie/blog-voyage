@@ -1,23 +1,42 @@
 ---
 import Social from "./social.astro";
 
-
 interface SocialData {
   icon_path: string;
   alt_desc: string;
   href: string;
 }
 const social_links: SocialData[] = [
-  {icon_path: "/icons/github_icon.svg", alt_desc: "The source code of this blog", href: "#"},
-  {icon_path:"/icons/mail_write.svg", alt_desc:"Write us a mail!", href:"#"},
-  {icon_path:"/icons/pixelfed_icon.svg", alt_desc:"Go see some of our pictures on our pixelfed", href:"#"}
+  {
+    icon_path: "/icons/github_icon.svg",
+    alt_desc: "Pour les plus curieux",
+    href: "https://github.com/InsulinJunkie/blog-voyage",
+  },
+  {
+    icon_path: "/icons/mail_write.svg",
+    alt_desc: "Écrivez nous un courriel!",
+    href: "mailto:gaufreetsiropderable@proton.me",
+  },
+  // {
+  //   icon_path: "/icons/pixelfed_icon.svg",
+  //   alt_desc: "Go see some of our pictures on our pixelfed",
+  //   href: "#",
+  // },
 ];
 ---
 
 <footer class="w-full bg-white shadow-sm sticky">
   <!-- TODO: Add few social media accounts -->
   <div class="flex flex-row gap-8 justify-center">
-    {social_links.map(social => <Social icon_path={social.icon_path} alt_desc={social.alt_desc} href={social.href} />)}
+    {
+      social_links.map((social) => (
+        <Social
+          icon_path={social.icon_path}
+          alt_desc={social.alt_desc}
+          href={social.href}
+        />
+      ))
+    }
   </div>
 </footer>
 <!-- TODO: Add newsletter input -->
