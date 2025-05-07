@@ -1,6 +1,15 @@
 ---
+import { Picture } from "astro:assets";
 const { post } = Astro.props;
-const { image_cover, title, description, pubDate, author } = post.frontmatter;
+const {
+  image_cover,
+  image_cover_width,
+  image_cover_height,
+  title,
+  description,
+  pubDate,
+  author,
+} = post.frontmatter;
 const date = new Date(pubDate).toLocaleDateString("en-US", {
   year: "numeric",
   month: "long",
@@ -10,17 +19,20 @@ const date = new Date(pubDate).toLocaleDateString("en-US", {
 
 <a
   href={post.url}
-  class="flex px-8 w-full mx-8 h-64 bg-peach-200 rounded-3xl
+  class="flex flex-col md:flex-row px-8 w-full mx-8 bg-peach-200 rounded-3xl
   shadow overflow-hidden transition-transform hover:scale-102 hover:ring-2 hover:ring-offset-2 hover:ring-peach-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-peach-500"
 >
   <!-- Left section: the image -->
-  <div class="w-1/3 h-full py-4">
+  <div class="w-full md:basis-1/3 h-auto py-4">
     {
       image_cover ? (
-        <img
+        <Picture
           src={image_cover}
           alt={title}
-          class="w-full h-full object-cover rounded-3xl"
+          width={image_cover_width}
+          height={image_cover_height}
+          format="jpg"
+          class="w-full h-full rounded-3xl"
         />
       ) : (
         <div class="w-full h-full bg-peach-500 flex items-center justify-center">
@@ -30,7 +42,7 @@ const date = new Date(pubDate).toLocaleDateString("en-US", {
     }
   </div>
   <!-- Right section: blog details -->
-  <div class="w-2/3 p-4 flex flex-col h-full">
+  <div class="w-full md:basis-2/3 p-4 flex flex-col h-auto">
     <h2 class="sm:text-lg md:text-2xl text-center font-bold text-gray-900">
       {title}
     </h2>

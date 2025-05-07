@@ -3,7 +3,9 @@ layout: ../../layouts/markdown_layout.astro
 title: "L'avant-départ"
 author: "Célest & Flo"
 description: "Les préparations d'avant départ sont toujours stressantes"
-image_cover: "/public/DSC_0005.JPG"
+image_cover: "/images/sac_a_dos.jpg"
+image_cover_width: 6000
+image_cover_height: 4000
 pubDate: 2022-07-15
 tags: []
 ---
